@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 
 // Register
 router.post('/register', async (req, res) => {
-  // Register logic
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
   const user = new User({
@@ -24,7 +23,6 @@ router.post('/register', async (req, res) => {
 
 // Login
 router.post('/login', async (req, res) => {
-  // Login logic
   const user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).send('Email or password is wrong');
   
