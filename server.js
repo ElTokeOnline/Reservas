@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const path = require('path');
-const authRoute = require('./routes/auth');
-const reservationRoute = require('./routes/reservations');
+const authRoute = require('./api/auth');
+const reservationRoute = require('./api/reservations');
 
 dotenv.config();
 
@@ -40,3 +40,5 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+module.exports = app;
