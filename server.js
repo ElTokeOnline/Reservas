@@ -16,9 +16,9 @@ app.use(express.json());
 app.use('/api/auth', authRoute);
 app.use('/api/reservations', reservationRoute);
 
-// Servir archivos estáticos de la carpeta 'public' si existe
+// Serve static files from the 'public' directory if in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('public'));
+  app.use(express.static(path.join(__dirname, 'public')));
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
